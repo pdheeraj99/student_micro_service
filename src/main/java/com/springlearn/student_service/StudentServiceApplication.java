@@ -10,9 +10,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.reactive.function.client.WebClient;
 
 @SpringBootApplication
-@ComponentScan({ "com.infybuzz.controller", "com.infybuzz.service" })
-@EntityScan("com.infybuzz.entity")
-@EnableJpaRepositories("com.infybuzz.repository")
+@ComponentScan({ "com.springlearn.controller", "com.springlearn.service" })
+@EntityScan("com.springlearn.entity")
+@EnableJpaRepositories("com.springlearn.repository")
 public class StudentServiceApplication {
 
 	@Value("${address.service.url}")
@@ -21,6 +21,18 @@ public class StudentServiceApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(StudentServiceApplication.class, args);
 	}
+
+	// 1. WebClient in Spring WebFlux: It's a non-blocking, reactive HTTP client
+	// within the Spring WebFlux framework.
+	// 2. Configuration via Code: The WebClient bean is created and configured,
+	// setting the baseUrl to an address retrieved from application properties.
+	// 3. Dependency Injection: Autowiring allows the WebClient bean to be injected
+	// into classes like StudentService for making HTTP requests.
+	// 4. Request Handling: The StudentService utilizes the WebClient to perform
+	// asynchronous requests to external services, like the address service.
+	// 5. Reactive Approach: This tool facilitates asynchronous HTTP interactions
+	// in reactive manner, commonly employed in Spring WebFlux applications for
+	// external service communication.
 
 	@Bean
 	public WebClient webClient() {
